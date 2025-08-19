@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
-#include<deque>
 #include<unordered_set>
+#include<algorithm>
 
 using namespace std;
 
@@ -29,7 +29,7 @@ vector<int> bruteForceApproach(vector<int> &v){
 }
 
 vector<int> optimalApproach(vector<int> &v){
-    deque<int> leaders;
+    vector<int> leaders;
     unordered_set<int> set;
     int maxElement = 0;
 
@@ -40,7 +40,7 @@ vector<int> optimalApproach(vector<int> &v){
             maxElement = v[i];
 
             if(set.find(v[i]) == set.end()){
-                leaders.push_front(v[i]);
+                leaders.push_back(v[i]);
                 set.insert(v[i]);
             }
 
@@ -48,7 +48,9 @@ vector<int> optimalApproach(vector<int> &v){
         
     }
 
-    return vector<int>(leaders.begin(), leaders.end());
+    reverse(leaders.begin(), leaders.end());    
+
+    return leaders; 
 }
 
 void printVector(vector<int> &v){
