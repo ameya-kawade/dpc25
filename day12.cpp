@@ -10,11 +10,11 @@ bool isValid(string s) {
     stack<char> st;
 
     for (char c : s) {
-        // if opening bracket → push
+      
         if (c == '(' || c == '[' || c == '{') {
             st.push(c);
         } 
-        // if closing bracket → check match
+      
         else {
             if (!st.empty()) {
                 char top = st.top();
